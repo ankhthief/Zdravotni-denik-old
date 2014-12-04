@@ -7,5 +7,11 @@
     <string name="about">About the application</string>
     <string name="share">Share the app!</string>
     <string name="list_of_ventures">List of all events</string>
+    <string name="title_activity_insert_event">InsertEvent</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="form_name_event">Specify name of an event</string>
+    <string name="form_place_event">Where will be an event held?</string>
 
 </resources>

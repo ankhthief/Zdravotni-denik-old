@@ -1,31 +1,24 @@
 package cz.bures.radim.zdravotnidenik;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 
-public class MainActivity extends Activity {
+public class InsertEvent extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-
-    public void onClick (MenuItem item) {
-        Intent intent = new Intent(this, InsertEvent.class);
-        startActivity(intent);
+        setContentView(R.layout.activity_insert_event);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_insert_event, menu);
         return true;
     }
 
