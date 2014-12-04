@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Zdravotni denik</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Zdravotní deník</string>
     <string name="action_settings">Settings</string>
+    <string name="insert">Insert</string>
+    <string name="about">About the application</string>
+    <string name="share">Share the app!</string>
 
 </resources>
