@@ -1,9 +1,11 @@
 package cz.bures.radim.zdravotnidenik;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class InsertEvent extends Activity {
@@ -12,6 +14,11 @@ public class InsertEvent extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_event);
+    }
+
+    public void onCancel(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
 
