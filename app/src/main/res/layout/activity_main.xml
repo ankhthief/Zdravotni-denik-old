@@ -3,21 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <ScrollView
+    <TextView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:text="@string/list_of_ventures"/>
 
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            </ListView>
-
-
-
-
-
-        </ScrollView>
+        </ListView>
 
 </LinearLayout>
