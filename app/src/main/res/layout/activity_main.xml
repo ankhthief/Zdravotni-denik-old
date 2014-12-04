@@ -13,20 +13,6 @@
         android:textColor="@android:color/black"
         android:textSize="30sp"/>
 
-    <Button
-    android:id="@+id/add"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Add New"
-    android:onClick="onClick"/>
-
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete First"
-        android:onClick="onClick"/>
-
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
