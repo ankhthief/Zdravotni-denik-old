@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Zdravotní deník</string>
+    <string name="app_name">Medical report</string>
     <string name="action_settings">Settings</string>
     <string name="insert">Insert</string>
     <string name="about">About the application</string>
     <string name="share">Share the app!</string>
-    <string name="list_of_ventures">List of all ventures</string>
+    <string name="list_of_ventures">List of all events</string>
 
 </resources>
