@@ -13,13 +13,16 @@ import android.widget.EditText;
 public class InsertEvent extends Activity {
 
     DBAdapter myDb;
-    EditText name = (EditText) findViewById(R.id.edit_text_name);
-    EditText place = (EditText) findViewById(R.id.edit_text_place);
+    EditText name ;
+    EditText place ;
+    MainActivity main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_event);
+        name = (EditText) findViewById(R.id.edit_text_name);
+        place = (EditText) findViewById(R.id.edit_text_place);
 
         openDB();
     }
@@ -57,7 +60,7 @@ public class InsertEvent extends Activity {
         myDb.open();
     }
 
-    public void onClick_AddEvent (View v) {
+    public void onClick_AddEvent (View view) {
         if(!TextUtils.isEmpty(name.getText()) || !TextUtils.isEmpty(place.getText())){
             myDb.insertRow(name.getText().toString(), place.getText().toString());
         }
