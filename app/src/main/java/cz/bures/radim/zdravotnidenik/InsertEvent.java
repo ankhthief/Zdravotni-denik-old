@@ -15,7 +15,6 @@ public class InsertEvent extends Activity {
     DBAdapter myDb;
     EditText name ;
     EditText place ;
-    MainActivity main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +22,15 @@ public class InsertEvent extends Activity {
         setContentView(R.layout.activity_insert_event);
         name = (EditText) findViewById(R.id.edit_text_name);
         place = (EditText) findViewById(R.id.edit_text_place);
-
         openDB();
     }
 
     public void onCancel(View view) {
+        myDb.close();
         Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        this.finish();
     }
 
 
@@ -64,6 +65,11 @@ public class InsertEvent extends Activity {
         if(!TextUtils.isEmpty(name.getText()) || !TextUtils.isEmpty(place.getText())){
             myDb.insertRow(name.getText().toString(), place.getText().toString());
         }
+        myDb.close();
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        this.finish();
     }
 
 

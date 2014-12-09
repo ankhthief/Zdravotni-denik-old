@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -25,7 +24,9 @@ public class MainActivity extends Activity {
 
     public void onClick (MenuItem item) {
         Intent intent = new Intent(this, InsertEvent.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        this.finish();
     }
 
 
