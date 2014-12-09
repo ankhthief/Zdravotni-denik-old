@@ -66,4 +66,14 @@ public class MainActivity extends Activity {
         ListView myList = (ListView) findViewById(R.id.list_events);
         myList.setAdapter(myCursorAdapter);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        closeDB();
+    }
+
+    private void closeDB() {
+        myDb.close();
+    }
 }
