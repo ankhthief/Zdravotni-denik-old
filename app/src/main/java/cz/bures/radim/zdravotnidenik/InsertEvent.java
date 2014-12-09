@@ -3,17 +3,25 @@ package cz.bures.radim.zdravotnidenik;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 
 public class InsertEvent extends Activity {
+
+    DBAdapter myDb;
+    EditText name = (EditText) findViewById(R.id.edit_text_name);
+    EditText place = (EditText) findViewById(R.id.edit_text_place);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_event);
+
+        openDB();
     }
 
     public void onCancel(View view) {
@@ -43,4 +51,17 @@ public class InsertEvent extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void openDB() {
+        myDb =  new DBAdapter(this);
+        myDb.open();
+    }
+
+    public void onClick_AddEvent (View v) {
+        if(!TextUtils.isEmpty(name.getText()) || !TextUtils.isEmpty(place.getText())){
+            myDb.insertRow(name.getText().toString(), place.getText().toString());
+        }
+    }
+
+
 }
