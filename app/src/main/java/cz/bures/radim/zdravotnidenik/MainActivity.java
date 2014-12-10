@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.SimpleCursorAdapter;
 
 
@@ -23,6 +26,9 @@ public class MainActivity extends Activity {
         openDB();
         populateListView();
         listViewItemClick();
+        ListView myList = (ListView) findViewById(R.id.list_events);
+        registerForContextMenu(myList);
+
     }
 
     public void onClick (MenuItem item) {
@@ -71,17 +77,42 @@ public class MainActivity extends Activity {
     }
 
     private void listViewItemClick() {
-        ListView myList = (ListView) findViewById(R.id.list_events);
-        myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //TODO tady bude proklik na ucastniky akce
+
+
+    }
+
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        if (v.getId()==R.id.list_events) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.event_popup, menu);
+        }
+    }
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        long id = ((AdapterView.AdapterContextMenuInfo)info).id;
+        switch(item.getItemId()) {
+            case R.id.edit_event_popup:
                 Intent intent = new Intent(MainActivity.this, InsertEvent.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
                 finish();
-            }
-        });
+                return true;
+            case R.id.delete_event_popup:
+                // TODO funkce na vymazání záznamu
+                myDb.deleteRow(id);
+                populateListView();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
+
+
 
     @Override
     protected void onDestroy() {
