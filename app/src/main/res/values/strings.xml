@@ -15,5 +15,7 @@
     <string name="form_place_event">Where will be an event held?</string>
     <string name="popup_event_edit">Edit</string>
     <string name="popup_event_delete">Delete</string>
+    <string name="title_activity_list_of_participants">ListOfParticipants</string>
+    <string name="list_participants">List of all Participants</string>
 
 </resources>

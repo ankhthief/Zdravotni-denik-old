@@ -78,6 +78,10 @@ public class MainActivity extends Activity {
     private void listViewItemClick() {
         //TODO tady bude proklik na ucastniky akce
 
+        //Intent intent = new Intent(this, ListOfParticipants.class);
+        //startActivity(intent);
+
+
 
     }
 

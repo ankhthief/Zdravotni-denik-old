@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="cz.bures.radim.zdravotnidenik.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,8 +17,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="cz.bures.radim.zdravotnidenik.InsertEvent"
-            android:label="@string/title_activity_insert_event">
+            android:name=".InsertEvent"
+            android:label="@string/title_activity_insert_event" >
+        </activity>
+        <activity
+            android:name=".ListOfParticipants"
+            android:label="@string/title_activity_list_of_participants" >
         </activity>
     </application>
 
