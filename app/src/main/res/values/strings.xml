@@ -17,5 +17,6 @@
     <string name="popup_event_delete">Delete</string>
     <string name="title_activity_list_of_participants">ListOfParticipants</string>
     <string name="list_participants">List of all Participants</string>
+    <string name="title_activity_insert_participant">InsertParticipant</string>
 
 </resources>

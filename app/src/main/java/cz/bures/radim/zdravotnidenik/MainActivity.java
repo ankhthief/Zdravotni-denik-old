@@ -24,13 +24,21 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         openDB();
         populateListView();
-        listViewItemClick();
+        //listViewItemClick();
         ListView myList = (ListView) findViewById(R.id.list_events);
+        myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, ListOfParticipants.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
         registerForContextMenu(myList);
 
     }
 
-    public void onClick (MenuItem item) {
+    public void onClickInsertEvent (MenuItem item) {
         Intent intent = new Intent(this, InsertEvent.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
@@ -74,17 +82,6 @@ public class MainActivity extends Activity {
         ListView myList = (ListView) findViewById(R.id.list_events);
         myList.setAdapter(myCursorAdapter);
     }
-
-    private void listViewItemClick() {
-        //TODO tady bude proklik na ucastniky akce
-
-        //Intent intent = new Intent(this, ListOfParticipants.class);
-        //startActivity(intent);
-
-
-
-    }
-
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {

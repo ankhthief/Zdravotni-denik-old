@@ -24,6 +24,10 @@
             android:name=".ListOfParticipants"
             android:label="@string/title_activity_list_of_participants" >
         </activity>
+        <activity
+            android:name=".InsertParticipant"
+            android:label="@string/title_activity_insert_participant" >
+        </activity>
     </application>
 
 </manifest>
