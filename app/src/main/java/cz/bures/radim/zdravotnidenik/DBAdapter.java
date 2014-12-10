@@ -73,17 +73,6 @@ public class DBAdapter {
 		return db.delete(DATABASE_TABLE, where, null) != 0;
 	}
 	
-	public void deleteAll() {
-		Cursor c = getAllRows();
-		long rowId = c.getColumnIndexOrThrow(KEY_ROWID);
-		if (c.moveToFirst()) {
-			do {
-				deleteRow(c.getLong((int) rowId));				
-			} while (c.moveToNext());
-		}
-		c.close();
-	}
-	
 	// Return all data in the database.
 	public Cursor getAllRows() {
 		String where = null;

@@ -103,7 +103,6 @@ public class MainActivity extends Activity {
                 finish();
                 return true;
             case R.id.delete_event_popup:
-                // TODO funkce na vymazání záznamu
                 myDb.deleteRow(id);
                 populateListView();
                 return true;
