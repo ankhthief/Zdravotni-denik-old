@@ -20,7 +20,7 @@ public class DBAdapter {
     public static final String PARTICIPANT_ROWID = "_id";
     public static final String PARTICIPANT_NAME = "name";
     public static final String PARTICIPANT_SURNAME = "surname";
-    public static final String PARTICIPANT_ID = "id_event";
+    public static String PARTICIPANT_ID = "id_event";
 
     //názvy sloupců tabulky Injuries:
     public static final String INJURIES_ROWID = "_id";
@@ -38,7 +38,7 @@ public class DBAdapter {
 	public static final String DATABASE_TABLE_EVENTS = "events";
     public static final String DATABASE_TABLE_PARTICIPANTS= "participants";
     public static final String DATABASE_TABLE_INJURIES = "injuries";
-	public static final int DATABASE_VERSION = 2; // Tohle číslo se musí změnit pokaždé, když se mění databáze
+	public static final int DATABASE_VERSION = 3; // Tohle číslo se musí změnit pokaždé, když se mění databáze
 		
 	//SQL pro vytvoření tabulky Events
 	private static final String DATABASE_CREATE_SQL_EVENTS =
@@ -136,8 +136,8 @@ public class DBAdapter {
 	}
 
     // Vrátí všechny data z tabulky Participants
-    public Cursor getAllRowsParticipants() {
-        Cursor c = 	db.query(true, DATABASE_TABLE_PARTICIPANTS, ALL_KEYS_PARTICIPANT, null, null, null, null, null, null);
+    public Cursor getAllRowsParticipants(String radek) {
+        Cursor c = 	db.query(true, DATABASE_TABLE_PARTICIPANTS, ALL_KEYS_PARTICIPANT, PARTICIPANT_ID = radek, null, null, null, null, null);
         if (c != null) {
             c.moveToFirst();
         }

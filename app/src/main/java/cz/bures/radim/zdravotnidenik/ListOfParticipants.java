@@ -17,6 +17,8 @@ public class ListOfParticipants extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_participants);
+        openDB();
+        populateListViewParticipants();
     }
 
 
@@ -42,7 +44,21 @@ public class ListOfParticipants extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void populateListViewParticipants() {
+    private void openDB() {
+        myDb =  new DBAdapter(this);
+        myDb.open();
+    }
 
+    public void populateListViewParticipants() {
+        Bundle extras = getIntent().getExtras();
+        String id;
+        id = extras.getString("id");
+        Cursor cursor1 = myDb.getAllRowsParticipants(id);
+        String[] fromParticipantsNames = new String[] {DBAdapter.PARTICIPANT_NAME, DBAdapter.PARTICIPANT_SURNAME};
+        int[] toViewIDsParticipants = new int[] {R.id.participant_name, R.id.participant_surname};
+        SimpleCursorAdapter myCursorAdapter;
+        myCursorAdapter = new SimpleCursorAdapter(getBaseContext(),R.layout.row_participant, cursor1, fromParticipantsNames, toViewIDsParticipants,0 );
+        ListView myList = (ListView) findViewById(R.id.list_participants);
+        myList.setAdapter(myCursorAdapter);
     }
 }
