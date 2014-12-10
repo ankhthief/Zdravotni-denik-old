@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -20,6 +22,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         openDB();
         populateListView();
+        listViewItemClick();
     }
 
     public void onClick (MenuItem item) {
@@ -65,6 +68,19 @@ public class MainActivity extends Activity {
         myCursorAdapter = new SimpleCursorAdapter(getBaseContext(),R.layout.row_event, cursor, fromEventNames, toViewIDs,0 );
         ListView myList = (ListView) findViewById(R.id.list_events);
         myList.setAdapter(myCursorAdapter);
+    }
+
+    private void listViewItemClick() {
+        ListView myList = (ListView) findViewById(R.id.list_events);
+        myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, InsertEvent.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     @Override

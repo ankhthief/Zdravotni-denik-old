@@ -94,6 +94,27 @@ public class DBAdapter {
 		return c;
 	}
 
+    public String getNameUpdate(long id) {
+        Cursor mCursor =
+                db.rawQuery("select name from events WHERE _id=" + id + ";", null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        String updateName = mCursor.getString(mCursor.getColumnIndex("name"));
+        return updateName;
+    }
+    public String getPlaceUpdate(long id) {
+        Cursor mCursor =
+                db.rawQuery("select place from events WHERE _id=" + id + ";", null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        String updatePlace = mCursor.getString(mCursor.getColumnIndex("place"));
+        return updatePlace;
+    }
+
+
+
 	// Get a specific row (by rowId)
 	public Cursor getRow(long rowId) {
 		String where = KEY_ROWID + "=" + rowId;

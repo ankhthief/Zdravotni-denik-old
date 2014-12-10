@@ -2,6 +2,7 @@ package cz.bures.radim.zdravotnidenik;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -23,6 +24,15 @@ public class InsertEvent extends Activity {
         name = (EditText) findViewById(R.id.edit_text_name);
         place = (EditText) findViewById(R.id.edit_text_place);
         openDB();
+        Bundle extras = getIntent().getExtras();
+        long id;
+
+        if (extras != null) {
+            id = extras.getLong("id");
+            name.setText(myDb.getNameUpdate(id));
+            place.setText(myDb.getPlaceUpdate(id));
+        }
+
     }
 
     public void onCancel(View view) {
@@ -62,8 +72,17 @@ public class InsertEvent extends Activity {
     }
 
     public void onClick_AddEvent (View view) {
+        Bundle extras = getIntent().getExtras();
+        long id;
+
+        if (extras != null) {
+            id = extras.getLong("id");
+            myDb.updateRow(id,name.getText().toString(), place.getText().toString());
+
+        } else {
         if(!TextUtils.isEmpty(name.getText()) || !TextUtils.isEmpty(place.getText())){
             myDb.insertRow(name.getText().toString(), place.getText().toString());
+        }
         }
         myDb.close();
         Intent intent = new Intent(this, MainActivity.class);
