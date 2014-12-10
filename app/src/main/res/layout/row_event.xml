@@ -9,12 +9,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/name_of_event"
-        android:textColor="@android:color/holo_blue_bright"
-        android:text="jmeno akce"/>
+        android:textColor="@android:color/holo_blue_bright"/>
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/location_of_event"
-        android:text="misto"/>
+        android:id="@+id/location_of_event"/>
 
 </LinearLayout>

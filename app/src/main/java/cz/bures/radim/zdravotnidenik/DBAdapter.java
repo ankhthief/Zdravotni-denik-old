@@ -10,6 +10,8 @@ import android.util.Log;
 public class DBAdapter {
 
 	private static final String TAG = "DBAdapter"; //used for logging database version changes
+    //TODO upravit a dopsat komentáře
+    //TODO doplnit tabulky a přepsat prefixy
 			
 	// Field Names:
 	public static final String KEY_ROWID = "_id";
@@ -18,10 +20,6 @@ public class DBAdapter {
 	
 	public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_NAME, KEY_PLACE};
 	
-	// Column Numbers for each Field Name:
-	public static final int COL_ROWID = 0;
-	public static final int COL_TASK = 1;
-	public static final int COL_DATE = 2;
 
 	// DataBase info:
 	public static final String DATABASE_NAME = "medical_reports.db";
@@ -75,8 +73,7 @@ public class DBAdapter {
 	
 	// Return all data in the database.
 	public Cursor getAllRows() {
-		String where = null;
-		Cursor c = 	db.query(true, DATABASE_TABLE, ALL_KEYS, where, null, null, null, null, null);
+		Cursor c = 	db.query(true, DATABASE_TABLE, ALL_KEYS, null, null, null, null, null, null);
 		if (c != null) {
 			c.moveToFirst();
 		}

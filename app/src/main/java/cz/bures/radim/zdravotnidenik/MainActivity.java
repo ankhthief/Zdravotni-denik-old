@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.PopupMenu;
 import android.widget.SimpleCursorAdapter;
 
 
@@ -94,7 +93,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        long id = ((AdapterView.AdapterContextMenuInfo)info).id;
+        long id = info.id;
         switch(item.getItemId()) {
             case R.id.edit_event_popup:
                 Intent intent = new Intent(MainActivity.this, InsertEvent.class);

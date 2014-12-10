@@ -2,7 +2,6 @@ package cz.bures.radim.zdravotnidenik;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -72,6 +71,7 @@ public class InsertEvent extends Activity {
     }
 
     public void onClick_AddEvent (View view) {
+        //TODO pole nesmí být prázdná warning toast
         Bundle extras = getIntent().getExtras();
         long id;
 

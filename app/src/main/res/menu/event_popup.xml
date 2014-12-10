@@ -3,10 +3,10 @@
 
     <item
         android:id="@+id/edit_event_popup"
-        android:title="Edit"/>
+        android:title="@string/popup_event_edit"/>
 
     <item
         android:id="@+id/delete_event_popup"
-        android:title="Delete"/>
+        android:title="@string/popup_event_delete"/>
 
 </menu>
