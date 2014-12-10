@@ -74,8 +74,8 @@ public class MainActivity extends Activity {
     }
 
     public void populateListView() {
-        Cursor cursor = myDb.getAllRows();
-        String[] fromEventNames = new String[] {DBAdapter.KEY_NAME, DBAdapter.KEY_PLACE};
+        Cursor cursor = myDb.getAllRowsEvent();
+        String[] fromEventNames = new String[] {DBAdapter.EVENT_NAME, DBAdapter.EVENT_PLACE};
         int[] toViewIDs = new int[] {R.id.name_of_event, R.id.location_of_event};
         SimpleCursorAdapter myCursorAdapter;
         myCursorAdapter = new SimpleCursorAdapter(getBaseContext(),R.layout.row_event, cursor, fromEventNames, toViewIDs,0 );
@@ -103,7 +103,7 @@ public class MainActivity extends Activity {
                 finish();
                 return true;
             case R.id.delete_event_popup:
-                myDb.deleteRow(id);
+                myDb.deleteRowEvent(id);
                 populateListView();
                 return true;
             default:

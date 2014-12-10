@@ -28,8 +28,8 @@ public class InsertEvent extends Activity {
 
         if (extras != null) {
             id = extras.getLong("id");
-            name.setText(myDb.getNameUpdate(id));
-            place.setText(myDb.getPlaceUpdate(id));
+            name.setText(myDb.getNameUpdateEvent(id));
+            place.setText(myDb.getPlaceUpdateEvent(id));
         }
 
     }
@@ -77,11 +77,11 @@ public class InsertEvent extends Activity {
 
         if (extras != null) {
             id = extras.getLong("id");
-            myDb.updateRow(id,name.getText().toString(), place.getText().toString());
+            myDb.updateRowEvent(id,name.getText().toString(), place.getText().toString());
 
         } else {
         if(!TextUtils.isEmpty(name.getText()) || !TextUtils.isEmpty(place.getText())){
-            myDb.insertRow(name.getText().toString(), place.getText().toString());
+            myDb.insertRowEvent(name.getText().toString(), place.getText().toString());
         }
         }
         myDb.close();

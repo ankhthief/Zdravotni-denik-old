@@ -1,12 +1,17 @@
 package cz.bures.radim.zdravotnidenik;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 
 public class ListOfParticipants extends Activity {
+
+    DBAdapter myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,5 +40,9 @@ public class ListOfParticipants extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void populateListViewParticipants() {
+
     }
 }
