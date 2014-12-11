@@ -1,6 +1,7 @@
 package cz.bures.radim.zdravotnidenik;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
@@ -52,13 +53,22 @@ public class ListOfParticipants extends Activity {
     public void populateListViewParticipants() {
         Bundle extras = getIntent().getExtras();
         String id;
-        id = extras.getString("id");
-        Cursor cursor1 = myDb.getAllRowsParticipants(id);
+        if (extras != null) {
+            id = extras.getString("id_eventu");
+        }
+        // TODO tady je potřeba pořešit předávání toho indexu
+        Cursor cursor1 = myDb.getAllRowsParticipants("2");
         String[] fromParticipantsNames = new String[] {DBAdapter.PARTICIPANT_NAME, DBAdapter.PARTICIPANT_SURNAME};
         int[] toViewIDsParticipants = new int[] {R.id.participant_name, R.id.participant_surname};
         SimpleCursorAdapter myCursorAdapter;
         myCursorAdapter = new SimpleCursorAdapter(getBaseContext(),R.layout.row_participant, cursor1, fromParticipantsNames, toViewIDsParticipants,0 );
         ListView myList = (ListView) findViewById(R.id.list_participants);
         myList.setAdapter(myCursorAdapter);
+    }
+
+    public void onClickInsertParticipant (MenuItem item) {
+        Intent intent = new Intent(this, InsertParticipant.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

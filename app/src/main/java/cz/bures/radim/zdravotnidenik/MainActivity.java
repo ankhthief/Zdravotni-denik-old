@@ -30,7 +30,10 @@ public class MainActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, ListOfParticipants.class);
-                intent.putExtra("id",id);
+
+                //TODO získat id kliknuteho eventu
+                String idstr = String.valueOf(id);
+                intent.putExtra("id_eventu",idstr);
                 startActivity(intent);
             }
         });

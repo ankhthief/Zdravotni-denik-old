@@ -20,8 +20,8 @@ public class InsertEvent extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_event);
-        name = (EditText) findViewById(R.id.edit_text_name);
-        place = (EditText) findViewById(R.id.edit_text_place);
+        name = (EditText) findViewById(R.id.edit_event_name);
+        place = (EditText) findViewById(R.id.edit_event_place);
         openDB();
         Bundle extras = getIntent().getExtras();
         long id;
