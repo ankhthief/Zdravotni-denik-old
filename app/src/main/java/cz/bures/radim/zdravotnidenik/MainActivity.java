@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -30,10 +31,10 @@ public class MainActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, ListOfParticipants.class);
-
+                Cursor cur = (Cursor) parent.getItemAtPosition(position);
+                //Toast.makeText(getApplicationContext(),"id:" + id + " rowid:" + cur.getInt(cur.getColumnIndex("_id")), Toast.LENGTH_SHORT).show();
                 //TODO získat id kliknuteho eventu
-                String idstr = String.valueOf(id);
-                intent.putExtra("id_eventu",idstr);
+                intent.putExtra("id_eventu",id);
                 startActivity(intent);
             }
         });

@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class InsertParticipant extends Activity {
@@ -29,6 +30,7 @@ public class InsertParticipant extends Activity {
         if (extras != null) {
             id_event = extras.getLong("id_eventu");
         }
+        //Toast.makeText(getApplicationContext(),"id:" + id_event, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -56,6 +58,10 @@ public class InsertParticipant extends Activity {
 
     public void onCancel(View view) {
         myDb.close();
+        //Toast.makeText(getApplicationContext(),"id:" + id_event, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, ListOfParticipants.class);
+        intent.putExtra("id_eventu",id_event);
+        startActivity(intent);
         this.finish();
     }
 
@@ -71,9 +77,10 @@ public class InsertParticipant extends Activity {
         }
         myDb.close();
         // TODO tady je potřeba pořešit předávání toho indexu
+        //Toast.makeText(getApplicationContext(),"id:" + id_event, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, ListOfParticipants.class);
-        startActivity(intent);
         intent.putExtra("id_eventu",id_event);
+        startActivity(intent);
         this.finish();
     }
 }

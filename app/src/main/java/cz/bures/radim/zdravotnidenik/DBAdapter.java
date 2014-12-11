@@ -136,9 +136,9 @@ public class DBAdapter {
 	}
 
     // Vrátí všechny data z tabulky Participants
-    public Cursor getAllRowsParticipants(String radek) {
-        Cursor c = 	db.rawQuery("SELECT * FROM participants WHERE id_event=" + radek + ";", null);
-                //db.query(true, DATABASE_TABLE_PARTICIPANTS, ALL_KEYS_PARTICIPANT, PARTICIPANT_ID = radek, null, null, null, null, null);
+    public Cursor getAllRowsParticipants(long radek) {
+        Cursor c = 	db.rawQuery("SELECT * FROM participants WHERE id_event= " + radek + ";", null);
+                //db.query(true, DATABASE_TABLE_PARTICIPANTS, ALL_KEYS_PARTICIPANT, PARTICIPANT_ID = String.valueOf(radek), null, null, null, null, null);
         if (c != null) {
             c.moveToFirst();
         }

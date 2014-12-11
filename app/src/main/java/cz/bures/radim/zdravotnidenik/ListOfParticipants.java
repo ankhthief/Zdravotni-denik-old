@@ -8,17 +8,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 
 public class ListOfParticipants extends Activity {
 
     DBAdapter myDb;
+    long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_participants);
         openDB();
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            id = extras.getLong("id_eventu");
+        }
+        //Toast.makeText(getApplicationContext(),"id:" + id, Toast.LENGTH_SHORT).show();
         populateListViewParticipants();
     }
 
@@ -51,13 +58,8 @@ public class ListOfParticipants extends Activity {
     }
 
     public void populateListViewParticipants() {
-        Bundle extras = getIntent().getExtras();
-        String id;
-        if (extras != null) {
-            id = extras.getString("id_eventu");
-        }
         // TODO tady je potřeba pořešit předávání toho indexu
-        Cursor cursor1 = myDb.getAllRowsParticipants("2");
+        Cursor cursor1 = myDb.getAllRowsParticipants(id);
         String[] fromParticipantsNames = new String[] {DBAdapter.PARTICIPANT_NAME, DBAdapter.PARTICIPANT_SURNAME};
         int[] toViewIDsParticipants = new int[] {R.id.participant_name, R.id.participant_surname};
         SimpleCursorAdapter myCursorAdapter;
@@ -68,7 +70,8 @@ public class ListOfParticipants extends Activity {
 
     public void onClickInsertParticipant (MenuItem item) {
         Intent intent = new Intent(this, InsertParticipant.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("id_eventu",id);
         startActivity(intent);
+        finish();
     }
 }
