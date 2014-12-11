@@ -19,13 +19,14 @@ public class MainActivity extends Activity {
 
     DBAdapter myDb;
 
+    // TODO chování aplikace tak, aby tlačítka zpět apod. fungovali správně, tedy návrat byl zpět na správnou activitu
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         openDB();
         populateListView();
-        //listViewItemClick();
         ListView myList = (ListView) findViewById(R.id.list_events);
         myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

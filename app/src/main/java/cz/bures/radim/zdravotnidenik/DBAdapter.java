@@ -125,6 +125,12 @@ public class DBAdapter {
 		String where = EVENT_ROWID + "=" + rowId;
 		return db.delete(DATABASE_TABLE_EVENTS, where, null) != 0;
 	}
+
+    // vymaže řádek z db podle PARTICIPANT_ROWID
+    public boolean deleteRowParticipants(long rowId) {
+        String where = PARTICIPANT_ROWID + "=" + rowId;
+        return db.delete(DATABASE_TABLE_PARTICIPANTS, where, null) != 0;
+    }
 	
 	// Vrátí všechny data z tabulky Events
 	public Cursor getAllRowsEvent() {
@@ -166,6 +172,30 @@ public class DBAdapter {
         return updateNameEvent;
     }
 
+    // fce pro úpravu jména participanta
+    public String getNameUpdateParticipant(long id) {
+        Cursor mCursor =
+                db.rawQuery("select name from participants WHERE _id=" + id + ";", null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        String updateNameParticipant;
+        updateNameParticipant = mCursor.getString(mCursor.getColumnIndex("name"));
+        return updateNameParticipant;
+    }
+
+    // fce pro úpravu příjmení participanta
+    public String getSurNameUpdateParticipant(long id) {
+        Cursor mCursor =
+                db.rawQuery("select surname from participants WHERE _id=" + id + ";", null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        String updateSurNameParticipant;
+        updateSurNameParticipant = mCursor.getString(mCursor.getColumnIndex("surname"));
+        return updateSurNameParticipant;
+    }
+
     // fce pro úpravu místa eventu
     public String getPlaceUpdateEvent(long id) {
         Cursor mCursor =
@@ -200,6 +230,16 @@ public class DBAdapter {
 		// vložení změn do db
 		return db.update(DATABASE_TABLE_EVENTS, newValues, where, null) != 0;
 	}
+
+    // změní řádek na nový řádek (update)
+    public boolean updateRowParticipant(long rowId, String task, String date) {
+        String where = PARTICIPANT_ROWID + "=" + rowId;
+        ContentValues newValues = new ContentValues();
+        newValues.put(PARTICIPANT_NAME, task);
+        newValues.put(PARTICIPANT_SURNAME, date);
+        // vložení změn do db
+        return db.update(DATABASE_TABLE_PARTICIPANTS, newValues, where, null) != 0;
+    }
 
 	
 	private static class DatabaseHelper extends SQLiteOpenHelper

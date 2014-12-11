@@ -4,8 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
@@ -14,19 +18,21 @@ import android.widget.Toast;
 public class ListOfParticipants extends Activity {
 
     DBAdapter myDb;
-    long id;
+    long id_eventu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_participants);
+        ListView list_participants = (ListView) findViewById(R.id.list_participants);
         openDB();
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            id = extras.getLong("id_eventu");
+            id_eventu = extras.getLong("id_eventu");
         }
-        //Toast.makeText(getApplicationContext(),"id:" + id, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"id:" + id_eventu, Toast.LENGTH_SHORT).show();
         populateListViewParticipants();
+        registerForContextMenu(list_participants);
     }
 
 
@@ -59,7 +65,7 @@ public class ListOfParticipants extends Activity {
 
     public void populateListViewParticipants() {
         // TODO tady je potřeba pořešit předávání toho indexu
-        Cursor cursor1 = myDb.getAllRowsParticipants(id);
+        Cursor cursor1 = myDb.getAllRowsParticipants(id_eventu);
         String[] fromParticipantsNames = new String[] {DBAdapter.PARTICIPANT_NAME, DBAdapter.PARTICIPANT_SURNAME};
         int[] toViewIDsParticipants = new int[] {R.id.participant_name, R.id.participant_surname};
         SimpleCursorAdapter myCursorAdapter;
@@ -70,8 +76,37 @@ public class ListOfParticipants extends Activity {
 
     public void onClickInsertParticipant (MenuItem item) {
         Intent intent = new Intent(this, InsertParticipant.class);
-        intent.putExtra("id_eventu",id);
+        intent.putExtra("id_eventu",id_eventu);
         startActivity(intent);
         finish();
+    }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        if (v.getId()==R.id.list_participants) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.event_popup, menu);
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        long id = info.id;
+        switch(item.getItemId()) {
+            case R.id.edit_event_popup:
+                Intent intent = new Intent(ListOfParticipants.this, InsertParticipant.class);
+                intent.putExtra("id",id);
+                intent.putExtra("id_eventu",id_eventu);
+                intent.putExtra("edit",true);
+                startActivity(intent);
+                return true;
+            case R.id.delete_event_popup:
+                myDb.deleteRowParticipants(id);
+                populateListViewParticipants();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
 }

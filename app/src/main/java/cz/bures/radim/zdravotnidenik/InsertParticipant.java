@@ -17,6 +17,7 @@ public class InsertParticipant extends Activity {
     EditText name;
     EditText surname;
     long id_event;
+    long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +26,20 @@ public class InsertParticipant extends Activity {
         name = (EditText) findViewById(R.id.edit_participant_name);
         surname = (EditText) findViewById(R.id.edit_participant_surname);
        openDB();
+        //TODO předávání těch postranejch extras
         // TODO tady je potřeba pořešit předávání toho indexu
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             id_event = extras.getLong("id_eventu");
+            //Toast.makeText(getApplicationContext(),"nacetlo se i id eventu " + id_event, Toast.LENGTH_SHORT).show();
+        }
+        if (extras != null) {
+            if (extras.getBoolean("edit")) {
+                //Toast.makeText(getApplicationContext(),"jedna se o edit", Toast.LENGTH_SHORT).show();
+                id = extras.getLong("id");
+                name.setText(myDb.getNameUpdateParticipant(id));
+                surname.setText(myDb.getSurNameUpdateParticipant(id));
+            }
         }
         //Toast.makeText(getApplicationContext(),"id:" + id_event, Toast.LENGTH_SHORT).show();
     }
@@ -71,12 +82,20 @@ public class InsertParticipant extends Activity {
     }
 
     public void onClick_AddParticipant(View view) {
-            if(!TextUtils.isEmpty(name.getText()) || !TextUtils.isEmpty(surname.getText())){
+        //TODO pole nesmí být prázdná warning toast
+        Bundle extras = getIntent().getExtras();
+        if (extras != null && extras.getBoolean("edit")) {
+            id = extras.getLong("id");
+            myDb.updateRowParticipant(id, name.getText().toString(), surname.getText().toString());
+
+
+        } else {
+            if (!TextUtils.isEmpty(name.getText()) || !TextUtils.isEmpty(surname.getText())) {
                 myDb.insertRowParticipant(name.getText().toString(), surname.getText().toString(), id_event);
 
+            }
         }
         myDb.close();
-        // TODO tady je potřeba pořešit předávání toho indexu
         //Toast.makeText(getApplicationContext(),"id:" + id_event, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, ListOfParticipants.class);
         intent.putExtra("id_eventu",id_event);
