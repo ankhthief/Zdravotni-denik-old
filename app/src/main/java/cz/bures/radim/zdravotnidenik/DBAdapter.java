@@ -116,7 +116,7 @@ public class DBAdapter {
         initialValues.put(INJURIES_ID, id_participant);
 
         // Vloží data do tabulky Injuries
-        return db.insert(DATABASE_TABLE_PARTICIPANTS, null, initialValues);
+        return db.insert(DATABASE_TABLE_INJURIES, null, initialValues);
     }
 
 	
@@ -152,8 +152,9 @@ public class DBAdapter {
     }
 
     // Vrátí všechny data z tabulky Injuries
-    public Cursor getAllRowsInjuries() {
-        Cursor c = 	db.query(true, DATABASE_TABLE_INJURIES, ALL_KEYS_INJURIES, null, null, null, null, null, null);
+    public Cursor getAllRowsInjuries(long radek) {
+        Cursor c = db.rawQuery("SELECT * FROM injuries WHERE id_participant= " + radek + ";", null);
+                //db.query(true, DATABASE_TABLE_INJURIES, ALL_KEYS_INJURIES, null, null, null, null, null, null);
         if (c != null) {
             c.moveToFirst();
         }

@@ -20,5 +20,10 @@
     <string name="title_activity_insert_participant">InsertParticipant</string>
     <string name="specify_participant_name">Specify a name of a participant</string>
     <string name="specify_participant_surname">Specify a surname of a participant</string>
+    <string name="title_activity_list_of_injuries">ListOfInjuries</string>
+    <string name="list_injuries">List of all injuries</string>
+    <string name="title_activity_insert_injury">InsertInjury</string>
+    <string name="name_of_injury">Set name of an injury.</string>
+    <string name="injury_description">Describe an injury</string>
 
 </resources>

@@ -28,6 +28,14 @@
             android:name=".InsertParticipant"
             android:label="@string/title_activity_insert_participant" >
         </activity>
+        <activity
+            android:name=".ListOfInjuries"
+            android:label="@string/title_activity_list_of_injuries" >
+        </activity>
+        <activity
+            android:name=".InsertInjury"
+            android:label="@string/title_activity_insert_injury" >
+        </activity>
     </application>
 
 </manifest>

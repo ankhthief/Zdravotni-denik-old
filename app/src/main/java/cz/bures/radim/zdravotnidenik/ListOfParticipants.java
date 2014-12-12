@@ -33,6 +33,17 @@ public class ListOfParticipants extends Activity {
         //Toast.makeText(getApplicationContext(),"id:" + id_eventu, Toast.LENGTH_SHORT).show();
         populateListViewParticipants();
         registerForContextMenu(list_participants);
+        list_participants.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ListOfParticipants.this, ListOfInjuries.class);
+                //Cursor cur = (Cursor) parent.getItemAtPosition(position);
+                //Toast.makeText(getApplicationContext(),"id:" + id + " rowid:" + cur.getInt(cur.getColumnIndex("_id")), Toast.LENGTH_SHORT).show();
+                //TODO získat id kliknuteho eventu
+                intent.putExtra("id_participant",id);
+                startActivity(intent);
+            }
+        });
     }
 
 
