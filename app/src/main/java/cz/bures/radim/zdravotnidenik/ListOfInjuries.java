@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.Toast;
 
 
 public class ListOfInjuries extends Activity {
@@ -25,8 +24,6 @@ public class ListOfInjuries extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_injuries);
         ListView list_injuries = (ListView) findViewById(R.id.list_injuries);
-        // TODO edit a delete context
-        // TODO proklik na popis
         openDB();
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -35,6 +32,14 @@ public class ListOfInjuries extends Activity {
         }
         populateListViewInjuries();
         registerForContextMenu(list_injuries);
+        list_injuries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ListOfInjuries.this, InjuryInfo.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -66,7 +71,6 @@ public class ListOfInjuries extends Activity {
     }
 
     public void populateListViewInjuries() {
-        // TODO tady je potřeba pořešit předávání toho indexu
         ListView list_injuries = (ListView) findViewById(R.id.list_injuries);
         Cursor cursor1 = myDb.getAllRowsInjuries(id_participant);
         String[] fromInjuriesNames = new String[] {DBAdapter.INJURIES_NAME, DBAdapter.INJURIES_TEXT};

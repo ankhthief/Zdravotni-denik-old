@@ -29,9 +29,6 @@ public class DBAdapter {
     public static final String INJURIES_ID = "id_participant";
 	
 	public static final String[] ALL_KEYS_EVENT = new String[] {EVENT_ROWID, EVENT_NAME, EVENT_PLACE};
-    public static final String[] ALL_KEYS_PARTICIPANT = new String[] {PARTICIPANT_ROWID, PARTICIPANT_NAME, PARTICIPANT_SURNAME, PARTICIPANT_ID};
-    public static final String[] ALL_KEYS_INJURIES = new String[] {INJURIES_ROWID,INJURIES_NAME, INJURIES_TEXT, INJURIES_ID};
-
 
 	// INFO o databázi:
 	public static final String DATABASE_NAME = "medical_reports.db";
@@ -237,19 +234,6 @@ public class DBAdapter {
         updatePlaceEvent = mCursor.getString(mCursor.getColumnIndex("place"));
         return updatePlaceEvent;
     }
-
-
-
-	// Get a specific row (by rowId)
-	public Cursor getRow(long rowId) {
-		String where = EVENT_ROWID + "=" + rowId;
-		Cursor c = 	db.query(true, DATABASE_TABLE_EVENTS, ALL_KEYS_EVENT,
-						where, null, null, null, null, null);
-		if (c != null) {
-			c.moveToFirst();
-		}
-		return c;
-	}
 	
 	// změní řádek na nový řádek (update)
 	public boolean updateRowEvent(long rowId, String task, String date) {

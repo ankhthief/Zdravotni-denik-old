@@ -25,5 +25,6 @@
     <string name="title_activity_insert_injury">InsertInjury</string>
     <string name="name_of_injury">Set name of an injury.</string>
     <string name="injury_description">Describe an injury</string>
+    <string name="title_activity_injury_info">InjuryInfo</string>
 
 </resources>

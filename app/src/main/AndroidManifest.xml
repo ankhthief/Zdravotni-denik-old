@@ -36,6 +36,10 @@
             android:name=".InsertInjury"
             android:label="@string/title_activity_insert_injury" >
         </activity>
+        <activity
+            android:name=".InjuryInfo"
+            android:label="@string/title_activity_injury_info" >
+        </activity>
     </application>
 
 </manifest>
