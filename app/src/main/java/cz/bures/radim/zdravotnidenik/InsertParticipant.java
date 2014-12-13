@@ -26,8 +26,6 @@ public class InsertParticipant extends Activity {
         name = (EditText) findViewById(R.id.edit_participant_name);
         surname = (EditText) findViewById(R.id.edit_participant_surname);
        openDB();
-        //TODO předávání těch postranejch extras
-        // TODO tady je potřeba pořešit předávání toho indexu
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             id_event = extras.getLong("id_eventu");

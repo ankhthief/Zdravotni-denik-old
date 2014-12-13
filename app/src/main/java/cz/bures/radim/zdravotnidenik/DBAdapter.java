@@ -66,13 +66,12 @@ public class DBAdapter {
             + INJURIES_ID + " TEXT"
             + ");";
 
-	private final Context context;
-	private DatabaseHelper myDBHelper;
+    private DatabaseHelper myDBHelper;
 	private SQLiteDatabase db;
 
 
 	public DBAdapter(Context ctx) {
-		this.context = ctx;
+        Context context = ctx;
 		myDBHelper = new DatabaseHelper(context);
 	}
 	
@@ -131,6 +130,12 @@ public class DBAdapter {
         String where = PARTICIPANT_ROWID + "=" + rowId;
         return db.delete(DATABASE_TABLE_PARTICIPANTS, where, null) != 0;
     }
+
+    // vymaže řádek z db podle INJURIES_ROWID
+    public boolean deleteRowInjuries(long rowId) {
+        String where = INJURIES_ROWID + "=" + rowId;
+        return db.delete(DATABASE_TABLE_INJURIES, where, null) != 0;
+    }
 	
 	// Vrátí všechny data z tabulky Events
 	public Cursor getAllRowsEvent() {
@@ -183,6 +188,30 @@ public class DBAdapter {
         String updateNameParticipant;
         updateNameParticipant = mCursor.getString(mCursor.getColumnIndex("name"));
         return updateNameParticipant;
+    }
+
+    // fce pro úpravu jména zranění
+    public String getNameUpdateInjury(long id) {
+        Cursor mCursor =
+                db.rawQuery("select name from injuries WHERE _id=" + id + ";", null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        String updateNameInjury;
+        updateNameInjury = mCursor.getString(mCursor.getColumnIndex("name"));
+        return updateNameInjury;
+    }
+
+    // fce pro úpravu jména zranění
+    public String getTextUpdateInjury(long id) {
+        Cursor mCursor =
+                db.rawQuery("select text from injuries WHERE _id=" + id + ";", null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        String updateTextInjury;
+        updateTextInjury = mCursor.getString(mCursor.getColumnIndex("text"));
+        return updateTextInjury;
     }
 
     // fce pro úpravu příjmení participanta
@@ -240,6 +269,15 @@ public class DBAdapter {
         newValues.put(PARTICIPANT_SURNAME, date);
         // vložení změn do db
         return db.update(DATABASE_TABLE_PARTICIPANTS, newValues, where, null) != 0;
+    }
+    // změní řádek na nový řádek (update)
+    public boolean updateRowInjury(long rowId, String name, String text) {
+        String where = INJURIES_ROWID + "=" + rowId;
+        ContentValues newValues = new ContentValues();
+        newValues.put(INJURIES_NAME, name);
+        newValues.put(INJURIES_TEXT, text);
+        // vložení změn do db
+        return db.update(DATABASE_TABLE_INJURIES, newValues, where, null) != 0;
     }
 
 	

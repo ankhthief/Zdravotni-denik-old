@@ -39,7 +39,6 @@ public class ListOfParticipants extends Activity {
                 Intent intent = new Intent(ListOfParticipants.this, ListOfInjuries.class);
                 //Cursor cur = (Cursor) parent.getItemAtPosition(position);
                 //Toast.makeText(getApplicationContext(),"id:" + id + " rowid:" + cur.getInt(cur.getColumnIndex("_id")), Toast.LENGTH_SHORT).show();
-                //TODO získat id kliknuteho eventu
                 intent.putExtra("id_participant",id);
                 startActivity(intent);
             }
@@ -75,7 +74,6 @@ public class ListOfParticipants extends Activity {
     }
 
     public void populateListViewParticipants() {
-        // TODO tady je potřeba pořešit předávání toho indexu
         Cursor cursor1 = myDb.getAllRowsParticipants(id_eventu);
         String[] fromParticipantsNames = new String[] {DBAdapter.PARTICIPANT_NAME, DBAdapter.PARTICIPANT_SURNAME};
         int[] toViewIDsParticipants = new int[] {R.id.participant_name, R.id.participant_surname};
@@ -111,6 +109,7 @@ public class ListOfParticipants extends Activity {
                 intent.putExtra("id_eventu",id_eventu);
                 intent.putExtra("edit",true);
                 startActivity(intent);
+                this.finish();
                 return true;
             case R.id.delete_event_popup:
                 myDb.deleteRowParticipants(id);

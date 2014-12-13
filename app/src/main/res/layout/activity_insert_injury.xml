@@ -19,7 +19,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_injury_name"
-        android:paddingBottom="5dp"/>
+        android:paddingBottom="5dp"
+        android:inputType="text"/>
 
 
     <TextView
@@ -33,7 +34,6 @@
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
         android:inputType="textMultiLine"
-        android:minLines="5"
         android:id="@+id/edit_injury_text"/>
 
     <LinearLayout

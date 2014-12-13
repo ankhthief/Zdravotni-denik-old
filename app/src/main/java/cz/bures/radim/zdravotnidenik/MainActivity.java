@@ -20,6 +20,7 @@ public class MainActivity extends Activity {
     DBAdapter myDb;
 
     // TODO chování aplikace tak, aby tlačítka zpět apod. fungovali správně, tedy návrat byl zpět na správnou activitu
+    // TODO promazání komentů a dopsání komentářů
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,6 @@ public class MainActivity extends Activity {
                 Intent intent = new Intent(MainActivity.this, ListOfParticipants.class);
                 Cursor cur = (Cursor) parent.getItemAtPosition(position);
                 //Toast.makeText(getApplicationContext(),"id:" + id + " rowid:" + cur.getInt(cur.getColumnIndex("_id")), Toast.LENGTH_SHORT).show();
-                //TODO získat id kliknuteho eventu
                 intent.putExtra("id_eventu",id);
                 startActivity(intent);
             }

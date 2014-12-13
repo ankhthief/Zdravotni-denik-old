@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class InsertInjury extends Activity {
@@ -24,14 +25,19 @@ public class InsertInjury extends Activity {
         name = (EditText) findViewById(R.id.edit_injury_name);
         text = (EditText) findViewById(R.id.edit_injury_text);
         openDB();
-        //TODO předávání těch postranejch extras
-        // TODO tady je potřeba pořešit předávání toho indexu
-
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             id_participant = extras.getLong("id_participant");
-            //Toast.makeText(getApplicationContext(),"nacetlo se i id eventu " + id_event, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(),"nacetlo se i id participanta " + id_participant, Toast.LENGTH_SHORT).show();
+        }
+        if (extras != null) {
+            if (extras.getBoolean("edit")) {
+                //Toast.makeText(getApplicationContext(), "jedna se o edit", Toast.LENGTH_SHORT).show();
+                long id;
+                id = extras.getLong("id");
+                name.setText(myDb.getNameUpdateInjury(id));
+                text.setText(myDb.getTextUpdateInjury(id));
+            }
         }
     }
 
@@ -60,7 +66,7 @@ public class InsertInjury extends Activity {
 
     public void onCancel(View view) {
         myDb.close();
-        //Toast.makeText(getApplicationContext(),"id:" + id_event, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"id:" + id_participant, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, ListOfInjuries.class);
         intent.putExtra("id_participant",id_participant);
         startActivity(intent);
@@ -74,11 +80,11 @@ public class InsertInjury extends Activity {
 
     public void onClick_AddInjury(View view) {
         //TODO pole nesmí být prázdná warning toast
-        //TODO dodělat edit
         Bundle extras = getIntent().getExtras();
+        long id;
         if (extras != null && extras.getBoolean("edit")) {
-           // id = extras.getLong("id");
-            //myDb.updateRowParticipant(id, name.getText().toString(), surname.getText().toString());
+            id = extras.getLong("id");
+            myDb.updateRowInjury(id, name.getText().toString(), text.getText().toString());
 
 
         } else {
@@ -88,7 +94,7 @@ public class InsertInjury extends Activity {
             }
         }
         myDb.close();
-        //Toast.makeText(getApplicationContext(),"id:" + id_event, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"id:" + id_participant, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, ListOfInjuries.class);
         intent.putExtra("id_participant",id_participant);
         startActivity(intent);
