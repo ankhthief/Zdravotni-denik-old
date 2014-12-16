@@ -124,4 +124,13 @@ public class MainActivity extends Activity {
     private void closeDB() {
         myDb.close();
     }
+
+    public void share(MenuItem item) {
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody = "Hello, try this awesome app. Download it at www.medicalreports.com";
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check this app!");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
 }
