@@ -26,5 +26,7 @@
     <string name="name_of_injury">Set name of an injury.</string>
     <string name="injury_description">Describe an injury.</string>
     <string name="title_activity_injury_info">InjuryInfo</string>
+    <string name="title_activity_aboutapp">About an app</string>
+    <string name="about_app">This application was created as a school project at Czech University of Life Sciences Prague</string>
 
 </resources>

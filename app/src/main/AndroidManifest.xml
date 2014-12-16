@@ -40,6 +40,13 @@
             android:name=".InjuryInfo"
             android:label="@string/title_activity_injury_info" >
         </activity>
+        <activity
+            android:name=".Aboutapp"
+            android:label="@string/title_activity_aboutapp"
+            android:theme="@android:style/Theme.Dialog"
+            >
+
+        </activity>
     </application>
 
 </manifest>

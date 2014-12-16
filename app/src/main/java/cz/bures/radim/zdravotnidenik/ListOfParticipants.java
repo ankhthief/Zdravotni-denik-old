@@ -117,4 +117,18 @@ public class ListOfParticipants extends Activity {
                 return super.onContextItemSelected(item);
         }
     }
+
+    public void share(MenuItem item) {
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody = "Hello, try this awesome app. Download it at www.medicalreports.com";
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check this app!");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
+
+    public void about(MenuItem item) {
+        Intent about = new Intent(this, Aboutapp.class);
+        startActivity(about);
+    }
 }

@@ -133,4 +133,8 @@ public class MainActivity extends Activity {
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
+    public void about(MenuItem item) {
+        Intent about = new Intent(this, Aboutapp.class);
+        startActivity(about);
+    }
 }
