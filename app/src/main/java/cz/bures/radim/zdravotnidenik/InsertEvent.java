@@ -78,6 +78,11 @@ public class InsertEvent extends Activity {
         if (extras != null) {
             id = extras.getLong("id");
             myDb.updateRowEvent(id,name.getText().toString(), place.getText().toString());
+            myDb.close();
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            this.finish();
 
         } else {
         if(!TextUtils.isEmpty(name.getText()) && !TextUtils.isEmpty(place.getText())){

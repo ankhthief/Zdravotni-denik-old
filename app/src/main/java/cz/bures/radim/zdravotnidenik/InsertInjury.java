@@ -84,6 +84,12 @@ public class InsertInjury extends Activity {
         if (extras != null && extras.getBoolean("edit")) {
             id = extras.getLong("id");
             myDb.updateRowInjury(id, name.getText().toString(), text.getText().toString());
+            myDb.close();
+            //Toast.makeText(getApplicationContext(),"id:" + id_participant, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, ListOfInjuries.class);
+            intent.putExtra("id_participant",id_participant);
+            startActivity(intent);
+            this.finish();
 
 
         } else {

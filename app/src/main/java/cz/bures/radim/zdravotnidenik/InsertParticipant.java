@@ -84,6 +84,11 @@ public class InsertParticipant extends Activity {
         if (extras != null && extras.getBoolean("edit")) {
             id = extras.getLong("id");
             myDb.updateRowParticipant(id, name.getText().toString(), surname.getText().toString());
+            myDb.close();
+            Intent intent = new Intent(this, ListOfParticipants.class);
+            intent.putExtra("id_eventu",id_event);
+            startActivity(intent);
+            this.finish();
 
 
         } else {
