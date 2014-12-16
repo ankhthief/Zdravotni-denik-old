@@ -17,8 +17,6 @@ import android.widget.SimpleCursorAdapter;
 public class MainActivity extends Activity {
 
     DBAdapter myDb;
-    // TODO promazání komentů a dopsání komentářů
-    // TODO Doplnění fcí menu
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -17,15 +17,15 @@
     <string name="popup_event_delete">Delete</string>
     <string name="title_activity_list_of_participants">List of all participants</string>
     <string name="list_participants">List of all Participants</string>
-    <string name="title_activity_insert_participant">InsertParticipant</string>
+    <string name="title_activity_insert_participant">Insert Participant</string>
     <string name="specify_participant_name">Specify a name of a participant.</string>
     <string name="specify_participant_surname">Specify a surname of a participant.</string>
-    <string name="title_activity_list_of_injuries">ListOfInjuries</string>
+    <string name="title_activity_list_of_injuries">List Of Injuries</string>
     <string name="list_injuries">List of all injuries</string>
-    <string name="title_activity_insert_injury">InsertInjury</string>
+    <string name="title_activity_insert_injury">Insert Injury</string>
     <string name="name_of_injury">Set name of an injury.</string>
     <string name="injury_description">Describe an injury.</string>
-    <string name="title_activity_injury_info">InjuryInfo</string>
+    <string name="title_activity_injury_info">Injury Info</string>
     <string name="title_activity_aboutapp">About an app</string>
     <string name="about_app">This application was created as a school project at Czech University of Life Sciences Prague</string>
 

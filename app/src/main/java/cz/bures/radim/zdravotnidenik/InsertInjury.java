@@ -79,7 +79,6 @@ public class InsertInjury extends Activity {
     }
 
     public void onClick_AddInjury(View view) {
-        //TODO pole nesmí být prázdná warning toast
         Bundle extras = getIntent().getExtras();
         long id;
         if (extras != null && extras.getBoolean("edit")) {
@@ -88,16 +87,19 @@ public class InsertInjury extends Activity {
 
 
         } else {
-            if (!TextUtils.isEmpty(name.getText()) || !TextUtils.isEmpty(text.getText())) {
+            if (!TextUtils.isEmpty(name.getText()) && !TextUtils.isEmpty(text.getText())) {
                 myDb.insertRowInjuries(name.getText().toString(), text.getText().toString(), id_participant);
+                myDb.close();
+                //Toast.makeText(getApplicationContext(),"id:" + id_participant, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, ListOfInjuries.class);
+                intent.putExtra("id_participant",id_participant);
+                startActivity(intent);
+                this.finish();
 
+            } else {
+                Toast.makeText(getApplicationContext(), "Fields can not be empty! ", Toast.LENGTH_SHORT).show();
             }
         }
-        myDb.close();
-        //Toast.makeText(getApplicationContext(),"id:" + id_participant, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, ListOfInjuries.class);
-        intent.putExtra("id_participant",id_participant);
-        startActivity(intent);
-        this.finish();
+
     }
 }

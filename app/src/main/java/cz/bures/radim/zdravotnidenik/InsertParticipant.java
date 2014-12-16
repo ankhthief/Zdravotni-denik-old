@@ -80,7 +80,6 @@ public class InsertParticipant extends Activity {
     }
 
     public void onClick_AddParticipant(View view) {
-        //TODO pole nesmí být prázdná warning toast
         Bundle extras = getIntent().getExtras();
         if (extras != null && extras.getBoolean("edit")) {
             id = extras.getLong("id");
@@ -88,16 +87,18 @@ public class InsertParticipant extends Activity {
 
 
         } else {
-            if (!TextUtils.isEmpty(name.getText()) || !TextUtils.isEmpty(surname.getText())) {
+            if (!TextUtils.isEmpty(name.getText()) && !TextUtils.isEmpty(surname.getText())) {
                 myDb.insertRowParticipant(name.getText().toString(), surname.getText().toString(), id_event);
-
+                myDb.close();
+                //Toast.makeText(getApplicationContext(),"id:" + id_event, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, ListOfParticipants.class);
+                intent.putExtra("id_eventu",id_event);
+                startActivity(intent);
+                this.finish();
+            } else {
+                Toast.makeText(getApplicationContext(),"Fields can not be empty! ", Toast.LENGTH_SHORT).show();
             }
         }
-        myDb.close();
-        //Toast.makeText(getApplicationContext(),"id:" + id_event, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, ListOfParticipants.class);
-        intent.putExtra("id_eventu",id_event);
-        startActivity(intent);
-        this.finish();
+
     }
 }

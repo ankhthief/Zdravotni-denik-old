@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class InsertEvent extends Activity {
@@ -71,7 +72,6 @@ public class InsertEvent extends Activity {
     }
 
     public void onClick_AddEvent (View view) {
-        //TODO pole nesmí být prázdná warning toast
         Bundle extras = getIntent().getExtras();
         long id;
 
@@ -80,15 +80,18 @@ public class InsertEvent extends Activity {
             myDb.updateRowEvent(id,name.getText().toString(), place.getText().toString());
 
         } else {
-        if(!TextUtils.isEmpty(name.getText()) || !TextUtils.isEmpty(place.getText())){
+        if(!TextUtils.isEmpty(name.getText()) && !TextUtils.isEmpty(place.getText())){
             myDb.insertRowEvent(name.getText().toString(), place.getText().toString());
+            myDb.close();
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            this.finish();
+        } else {
+            Toast.makeText(getApplicationContext(), "Fields can not be empty! ", Toast.LENGTH_SHORT).show();
         }
         }
-        myDb.close();
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        this.finish();
+
     }
 
 
