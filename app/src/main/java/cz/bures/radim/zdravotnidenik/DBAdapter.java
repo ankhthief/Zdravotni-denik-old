@@ -178,6 +178,9 @@ public class DBAdapter {
     public String getNameUpdateParticipant(long id) {
         Cursor mCursor =
                 db.rawQuery("select name from participants WHERE _id=" + id + ";", null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
         String updateNameParticipant;
         updateNameParticipant = mCursor.getString(mCursor.getColumnIndex("name"));
         return updateNameParticipant;
@@ -187,6 +190,9 @@ public class DBAdapter {
     public String getNameUpdateInjury(long id) {
         Cursor mCursor =
                 db.rawQuery("select name from injuries WHERE _id=" + id + ";", null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
         String updateNameInjury;
         updateNameInjury = mCursor.getString(mCursor.getColumnIndex("name"));
         return updateNameInjury;
@@ -196,6 +202,9 @@ public class DBAdapter {
     public String getTextUpdateInjury(long id) {
         Cursor mCursor =
                 db.rawQuery("select text from injuries WHERE _id=" + id + ";", null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
         String updateTextInjury;
         updateTextInjury = mCursor.getString(mCursor.getColumnIndex("text"));
         return updateTextInjury;
@@ -205,6 +214,9 @@ public class DBAdapter {
     public String getSurNameUpdateParticipant(long id) {
         Cursor mCursor =
                 db.rawQuery("select surname from participants WHERE _id=" + id + ";", null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
         String updateSurNameParticipant;
         updateSurNameParticipant = mCursor.getString(mCursor.getColumnIndex("surname"));
         return updateSurNameParticipant;
@@ -214,6 +226,9 @@ public class DBAdapter {
     public String getPlaceUpdateEvent(long id) {
         Cursor mCursor =
                 db.rawQuery("select place from events WHERE _id=" + id + ";", null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
         String updatePlaceEvent;
         updatePlaceEvent = mCursor.getString(mCursor.getColumnIndex("place"));
         return updatePlaceEvent;
