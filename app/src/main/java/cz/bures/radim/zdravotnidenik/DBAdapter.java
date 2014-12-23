@@ -166,6 +166,9 @@ public class DBAdapter {
     public String getNameUpdateEvent(long id) {
         Cursor mCursor =
                 db.rawQuery("select name from events WHERE _id=" + id + ";", null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
         String updateNameEvent;
         updateNameEvent = mCursor.getString(mCursor.getColumnIndex("name"));
         return updateNameEvent;
