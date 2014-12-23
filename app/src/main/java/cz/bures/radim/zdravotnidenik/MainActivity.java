@@ -29,7 +29,6 @@ public class MainActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, ListOfParticipants.class);
-                //Toast.makeText(getApplicationContext(),"id:" + id + " rowid:" + cur.getInt(cur.getColumnIndex("_id")), Toast.LENGTH_SHORT).show();
                 intent.putExtra("id_eventu",id);
                 startActivity(intent);
             }

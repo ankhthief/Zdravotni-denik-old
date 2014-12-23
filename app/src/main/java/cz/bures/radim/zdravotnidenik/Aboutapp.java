@@ -2,9 +2,7 @@ package cz.bures.radim.zdravotnidenik;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 
 public class Aboutapp extends Activity {

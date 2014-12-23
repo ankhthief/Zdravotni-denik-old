@@ -68,8 +68,7 @@ public class DBAdapter {
 
 
 	public DBAdapter(Context ctx) {
-        Context context = ctx;
-		myDBHelper = new DatabaseHelper(context);
+		myDBHelper = new DatabaseHelper(ctx);
 	}
 	
 	// Otevře databázi
