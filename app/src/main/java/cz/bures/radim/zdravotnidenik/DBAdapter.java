@@ -68,8 +68,7 @@ public class DBAdapter {
 
 
 	public DBAdapter(Context ctx) {
-        Context context = ctx;
-		myDBHelper = new DatabaseHelper(context);
+		myDBHelper = new DatabaseHelper(ctx);
 	}
 	
 	// Otevře databázi
@@ -167,11 +166,10 @@ public class DBAdapter {
     public String getNameUpdateEvent(long id) {
         Cursor mCursor =
                 db.rawQuery("select name from events WHERE _id=" + id + ";", null);
-        if (mCursor != null) {
-            mCursor.moveToFirst();
+        String updateNameEvent= null;
+        if (mCursor != null && mCursor.moveToFirst()) {
+            updateNameEvent = mCursor.getString(mCursor.getColumnIndex("name"));
         }
-        String updateNameEvent;
-        updateNameEvent = mCursor.getString(mCursor.getColumnIndex("name"));
         return updateNameEvent;
     }
 
@@ -179,11 +177,10 @@ public class DBAdapter {
     public String getNameUpdateParticipant(long id) {
         Cursor mCursor =
                 db.rawQuery("select name from participants WHERE _id=" + id + ";", null);
-        if (mCursor != null) {
-            mCursor.moveToFirst();
+        String updateNameParticipant = null;
+        if (mCursor != null && mCursor.moveToFirst()) {
+            updateNameParticipant = mCursor.getString(mCursor.getColumnIndex("name"));
         }
-        String updateNameParticipant;
-        updateNameParticipant = mCursor.getString(mCursor.getColumnIndex("name"));
         return updateNameParticipant;
     }
 
@@ -191,11 +188,10 @@ public class DBAdapter {
     public String getNameUpdateInjury(long id) {
         Cursor mCursor =
                 db.rawQuery("select name from injuries WHERE _id=" + id + ";", null);
-        if (mCursor != null) {
-            mCursor.moveToFirst();
+        String updateNameInjury = null;
+        if (mCursor != null && mCursor.moveToFirst()) {
+            updateNameInjury = mCursor.getString(mCursor.getColumnIndex("name"));
         }
-        String updateNameInjury;
-        updateNameInjury = mCursor.getString(mCursor.getColumnIndex("name"));
         return updateNameInjury;
     }
 
@@ -203,11 +199,10 @@ public class DBAdapter {
     public String getTextUpdateInjury(long id) {
         Cursor mCursor =
                 db.rawQuery("select text from injuries WHERE _id=" + id + ";", null);
-        if (mCursor != null) {
-            mCursor.moveToFirst();
+        String updateTextInjury = null;
+        if (mCursor != null && mCursor.moveToFirst()) {
+            updateTextInjury = mCursor.getString(mCursor.getColumnIndex("text"));
         }
-        String updateTextInjury;
-        updateTextInjury = mCursor.getString(mCursor.getColumnIndex("text"));
         return updateTextInjury;
     }
 
@@ -215,11 +210,10 @@ public class DBAdapter {
     public String getSurNameUpdateParticipant(long id) {
         Cursor mCursor =
                 db.rawQuery("select surname from participants WHERE _id=" + id + ";", null);
-        if (mCursor != null) {
-            mCursor.moveToFirst();
+        String updateSurNameParticipant = null;
+        if (mCursor != null && mCursor.moveToFirst()) {
+            updateSurNameParticipant = mCursor.getString(mCursor.getColumnIndex("surname"));
         }
-        String updateSurNameParticipant;
-        updateSurNameParticipant = mCursor.getString(mCursor.getColumnIndex("surname"));
         return updateSurNameParticipant;
     }
 
@@ -227,11 +221,10 @@ public class DBAdapter {
     public String getPlaceUpdateEvent(long id) {
         Cursor mCursor =
                 db.rawQuery("select place from events WHERE _id=" + id + ";", null);
-        if (mCursor != null) {
-            mCursor.moveToFirst();
+        String updatePlaceEvent = null;
+        if (mCursor != null && mCursor.moveToFirst()) {
+            updatePlaceEvent = mCursor.getString(mCursor.getColumnIndex("place"));
         }
-        String updatePlaceEvent;
-        updatePlaceEvent = mCursor.getString(mCursor.getColumnIndex("place"));
         return updatePlaceEvent;
     }
 	
