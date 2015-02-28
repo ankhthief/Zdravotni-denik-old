@@ -92,7 +92,7 @@ public class InsertEvent extends Activity {
             startActivity(intent);
             this.finish();
         } else {
-            Toast.makeText(getApplicationContext(), "Fields can not be empty! ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.warning, Toast.LENGTH_SHORT).show();
         }
         }
 

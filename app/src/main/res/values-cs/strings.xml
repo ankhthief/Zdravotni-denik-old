@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <string name="app_name">Zdravotní deník</string>
+        <string name="action_settings">Nastavení</string>
+        <string name="insert">Přidat</string>
+        <string name="about">O aplikaci</string>
+        <string name="share">Sdílet aplikaci</string>
+        <string name="list_of_ventures">Seznam akcí</string>
+        <string name="title_activity_insert_event">Přidat akci</string>
+        <string name="cancel">Zrušit</string>
+        <string name="save">Uložit</string>
+        <string name="form_name_event">Zadejte jméno akce</string>
+        <string name="form_place_event">Kde se bude akce konat?</string>
+        <string name="popup_event_edit">Upravit</string>
+        <string name="popup_event_delete">Smazat</string>
+        <string name="title_activity_list_of_participants">Seznam účastníků</string>
+        <string name="list_participants">Seznam účastníků</string>
+        <string name="title_activity_insert_participant">Přidat účastníka</string>
+        <string name="specify_participant_name">Zadejte jméno účastníka.</string>
+        <string name="specify_participant_surname">Zadejte příjmení účastníka.</string>
+        <string name="title_activity_list_of_injuries">Seznam zranění</string>
+        <string name="list_injuries">Seznam zranění</string>
+        <string name="title_activity_insert_injury">Přidat zranění</string>
+        <string name="name_of_injury">Pojmenujte zranění.</string>
+        <string name="injury_description">Popište zranění.</string>
+        <string name="title_activity_injury_info">Detail zranění</string>
+        <string name="title_activity_aboutapp">O aplikaci</string>
+        <string name="about_app">"Tato aplikace vznikla jako bakalářská práce.\nAutor Radim Bureš."</string>
+        <string name="warning">Musíte vyplnit všechna pole!</string>
+
+</resources>

@@ -8,7 +8,6 @@
     <string name="share">Share the app!</string>
     <string name="list_of_ventures">List of all events</string>
     <string name="title_activity_insert_event">Insert an Event</string>
-    <string name="hello_world">Hello world!</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="form_name_event">Specify name of an event</string>
@@ -28,5 +27,6 @@
     <string name="title_activity_injury_info">Injury Info</string>
     <string name="title_activity_aboutapp">About an app</string>
     <string name="about_app">"This application was created as a school project at Czech University of Life Sciences Prague.\nAuthor Radim Bureš."</string>
+    <string name="warning">Fields can not be empty!</string>
 
 </resources>
