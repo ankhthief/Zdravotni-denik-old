@@ -124,11 +124,11 @@ public class MainActivity extends Activity {
 
     public void share(MenuItem item) {
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
-        String shareBody = "Hello, try this awesome app. Download it at www.medicalreports.com";
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check this app!");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+        sharingIntent.setType("text/html");
+        String shareBody = getResources().getString(R.string.share_text);
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getResources().getText(R.string.share_subject));
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, (shareBody));
+        startActivity(Intent.createChooser(sharingIntent, getResources().getText(R.string.share_via)));
     }
     public void about(MenuItem item) {
         Intent about = new Intent(this, Aboutapp.class);

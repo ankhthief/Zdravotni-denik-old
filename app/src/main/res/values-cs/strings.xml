@@ -28,5 +28,8 @@
         <string name="title_activity_aboutapp">O aplikaci</string>
         <string name="about_app">"Tato aplikace vznikla jako bakalářská práce.\nAutor Radim Bureš."</string>
         <string name="warning">Musíte vyplnit všechna pole!</string>
+        <string name="share_text">"Ahoj, zkus tuto super aplikaci. Najdeš jí na <a href="www.medicalreports.com">www.medicalreports.com</a></string>
+        <string name="share_via">"Sdílet pomocí"</string>
+        <string name="share_subject">Koukni se na tuto aplikaci!</string>
 
 </resources>

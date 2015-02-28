@@ -28,5 +28,8 @@
     <string name="title_activity_aboutapp">About an app</string>
     <string name="about_app">"This application was created as a school project at Czech University of Life Sciences Prague.\nAuthor Radim Bureš."</string>
     <string name="warning">Fields can not be empty!</string>
+    <string name="share_text">"Hello, try this awesome app. Download it at <a href="www.medicalreports.com">www.medicalreports.com</a>]]</string>
+    <string name="share_via">"Share via"</string>
+    <string name="share_subject">Check this app!</string>
 
 </resources>
